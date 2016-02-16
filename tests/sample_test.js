@@ -1,13 +1,15 @@
 module.exports = {
-  "Demo test Google" : function (browser) {
+  "Superqa homepage" : function (browser) {
     browser
-      .url("http://www.google.com")
+      .url("https://superqa.herokuapp.com/")
       .waitForElementVisible("body", 1000)
-      .setValue("input[type=text]", "nightwatch")
-      .waitForElementVisible("button[name=btnG]", 1000)
-      .click("button[name=btnG]")
-      .pause(1000)
-      .assert.containsText("#main", "Night Watch")
+      .assert.containsText(".menuContainer", "About")
+      .assert.containsText(".menuContainer", "Courses")
+      .assert.containsText(".menuContainer", "Staff")
+      .assert.containsText(".menuContainer", "Login")
+      .assert.containsText(".menuContainer", "Register")
+      .assert.containsText(".menuContainer", "Apply")
       .end();
   }
+
 };
