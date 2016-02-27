@@ -49,5 +49,30 @@ module.exports = {
       .click("input[value=Login]")
       .verify.containsText(".menuContainer", "Accounts")
       .end()
+  },
+
+  "Account test" : function (browser) {
+    browser
+      .url("https://superqa.herokuapp.com/")
+      .waitForElementVisible("body", 1000)
+      .click(".login")
+      .pause(1000)
+      .setValue("input[name=email]", "test1@test.com")
+      .setValue("input[type=password]", "password")
+      .click("input[value=Login]")
+      .click(".accounts-tab")
+      .pause(1000)
+      .click(".newAccountButton")
+      .setValue("input[name=cohort]", "Cheese Class")
+      .setValue("input[name=startDate]", "02/28/2016")
+      .setValue("input[name=endDate]", "03/25/2016")
+      .setValue("input[name=amount]", "2000")
+      .click(".addAccount")
+      .assert.containsText(".top", "Cheese Class")
+      .assert.containsText(".rightSideBar", "Cheese Class")
+      .jqueryClick(".rightSideBar .cohortMenu li:first .removeAccount")
+      .acceptAlert()
+      .pause(1000)
+      .end()
   }
 };
